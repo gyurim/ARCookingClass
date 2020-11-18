@@ -2,6 +2,7 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'com.google.ar.sceneform.plugin'
+apply plugin: 'kotlin-kapt'
 
 sceneform.asset('sampledata/models/knife.obj',
         'default',
@@ -33,6 +34,22 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
+    dataBinding {
+        enabled = true
+    }
+
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+}
+
+ext{
+    RoomVersion = '2.2.5'
+    FireStoreVersion = '21.5.0'
+    ARCoreVersion = '1.20.0'
+    pagingVersion = '2.1.2'
+    lifecycleVersion = '2.2.0'
 }
 
 dependencies {
@@ -46,8 +63,25 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
     implementation 'com.google.android.material:material:1.2.1'
 
-    // ARCore
-    implementation 'com.google.ar:core:1.20.0'
+    //ARCore
+    implementation "com.google.ar:core:$ARCoreVersion"
     implementation 'com.google.ar.sceneform.ux:sceneform-ux:1.15.0'
+
+    //FireStore
+    implementation "com.google.firebase:firebase-firestore:$FireStoreVersion"
+
+    //Room
+    implementation "androidx.room:room-runtime:$RoomVersion"
+    kapt "androidx.room:room-compiler:$RoomVersion"
+
+    //Paging
+    implementation "androidx.paging:paging-rxjava2:$pagingVersion"
+    implementation "androidx.paging:paging-runtime:$pagingVersion"
+    testImplementation "androidx.paging:paging-common:$pagingVersion"
+
+    //Viewmodel
+    implementation "androidx.lifecycle:lifecycle-extensions:$lifecycleVersion"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycleVersion"
 
 }

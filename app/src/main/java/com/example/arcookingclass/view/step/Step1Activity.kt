@@ -1,9 +1,9 @@
-package com.example.arcookingclass
+package com.example.arcookingclass.view.step
 
-import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.appcompat.app.AlertDialog
+import com.example.arcookingclass.R
 import com.google.ar.core.Anchor
 import com.google.ar.sceneform.AnchorNode
 import com.google.ar.sceneform.rendering.ModelRenderable
@@ -11,12 +11,12 @@ import com.google.ar.sceneform.ux.ArFragment
 import com.google.ar.sceneform.ux.BaseArFragment
 import com.google.ar.sceneform.ux.TransformableNode
 
-class MainActivity : AppCompatActivity() {
+class Step1Activity : AppCompatActivity() {
     private lateinit var arFragment : ArFragment
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_step1)
 
         arFragment = supportFragmentManager.findFragmentById(R.id.arFragment) as ArFragment
 

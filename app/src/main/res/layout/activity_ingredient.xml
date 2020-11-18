@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="recipeItem"
+            type="com.example.arcookingclass.data.Recipe" />
+
+        <variable
+            name="viewModel"
+            type="com.example.arcookingclass.view.ingredient.IngredientViewModel" />
+    </data>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <Button
+            android:id="@+id/step1_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/step1_btn_name"
+            android:onClick="@{()->viewModel.onButtonClick()}"/>
+
+        <TextView
+            android:id="@+id/ingredient_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/hint_ingredient_name"
+            android:text="@{recipeItem.ingredient}"
+
+            android:layout_below="@id/step1_btn"/>
+    </RelativeLayout>
+</layout>
