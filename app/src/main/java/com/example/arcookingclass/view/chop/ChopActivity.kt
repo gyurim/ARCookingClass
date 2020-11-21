@@ -17,12 +17,14 @@ import com.google.ar.core.Plane
 import com.google.ar.core.Pose
 import com.google.ar.sceneform.AnchorNode
 import com.google.ar.sceneform.Node
+import com.google.ar.sceneform.math.Quaternion
 import com.google.ar.sceneform.math.Vector3
 import com.google.ar.sceneform.rendering.ModelRenderable
 import com.google.ar.sceneform.ux.ArFragment
 import com.google.ar.sceneform.ux.BaseArFragment
 import com.google.ar.sceneform.ux.TransformableNode
 import kotlinx.android.synthetic.main.activity_chop.*
+import java.util.*
 
 class ChopActivity : AppCompatActivity(), View.OnClickListener{
     private lateinit var arFragment : ArFragment
@@ -62,35 +64,42 @@ class ChopActivity : AppCompatActivity(), View.OnClickListener{
     }
 
     private fun addModelToScence(anchor: Anchor, it: ModelRenderable?) {
-        val anchorNode = AnchorNode(anchor)
-
-        it.let {
-            Node().apply {
-                setParent(anchorNode)
-                renderable = it
-                localPosition = Vector3(positionX, positionY, positionZ)
-                localScale = Vector3(0.1f, 0.1f, 0.1f)
-            }
-            arFragment.arSceneView.scene.addChild(anchorNode)
-
-            Node().apply {
-                setParent(anchorNode)
-                renderable = it
-                localPosition = Vector3(positionX, positionY, positionZ)
-                localScale = Vector3(0.1f, 0.1f, 0.1f)
-            }
-            arFragment.arSceneView.scene.addChild(anchorNode)
-
-            Node().apply {
-                setParent(anchorNode)
-                renderable = it
-                localPosition = Vector3(positionX, positionY, positionZ)
-                localScale = Vector3(0.1f, 0.1f, 0.1f)
-            }
-            arFragment.arSceneView.scene.addChild(anchorNode)
+        val anchorNode = AnchorNode(anchor).apply {
+            setParent(arFragment.arSceneView.scene)
         }
 
-//        positionX -= 3f
+        it?.let{
+            Node().apply{
+                setParent(anchorNode)
+                renderable = it
+                localPosition = Vector3(-0.1f, 0f, 0f)
+                localRotation = Quaternion.axisAngle(Vector3(-1f, 0f, 0f), 90f)
+                localScale = Vector3(0.03f, 0.03f, 0.03f)
+            }
+
+            Node().apply {
+                setParent(anchorNode)
+                renderable = it
+                localRotation = Quaternion.axisAngle(Vector3(-1f, 0f, 0f), 90f)
+                localScale = Vector3(0.03f, 0.03f, 0.03f)
+            }
+
+            Node().apply{
+                setParent(anchorNode)
+                renderable = it
+                localPosition = Vector3(0.1f, 0f, 0f)
+                localRotation = Quaternion.axisAngle(Vector3(-1f, 0f, 0f), 90f)
+                localScale = Vector3(0.03f, 0.03f, 0.03f)
+            }
+
+            Node().apply{
+                setParent(anchorNode)
+                renderable = it
+                localPosition = Vector3(0.2f, 0f, 0f)
+                localRotation = Quaternion.axisAngle(Vector3(-1f, 0f, 0f), 90f)
+                localScale = Vector3(0.03f, 0.03f, 0.03f)
+            }
+        }
     }
 
     private fun onNextButtonClick(){
