@@ -16,7 +16,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.example.arcookingclass.view.main.MainActivity">
+        <activity
+            android:name="com.example.arcookingclass.view.main.MainActivity"
+            android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -32,6 +34,8 @@
         <activity android:name=".view.placedough.PlaceDoughActivity"/>
         <activity android:name=".view.bakepajeon.BakePajeonActivity"/>
         <activity android:name=".view.completecooking.CompleteCookingActivity"/>
+        <activity android:name=".view.recipeintro.RecipeIntroActivity"/>
+        <activity android:name=".view.makedough.MakeDoughActivity"/>
     </application>
 
 </manifest>

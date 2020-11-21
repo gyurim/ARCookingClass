@@ -1,11 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-    <TextView
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+        <variable
+            name="viewModel"
+            type="com.example.arcookingclass.view.completecooking.CompleteCookingViewModel" />
+    </data>
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/complete_cooking_txt"/>
-</RelativeLayout>
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_marginTop="@dimen/common_height_40dp"
+        android:layout_marginStart="@dimen/common_margin_30dp"
+        android:layout_marginEnd="@dimen/common_margin_30dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <ImageButton
+                android:layout_width="15dp"
+                android:layout_height="wrap_content"
+                android:scaleType="fitCenter"
+                android:adjustViewBounds="true"
+                android:src="@drawable/prev_btn"
+                android:layout_alignParentStart="true"
+                android:background="#00ff0000"
+                android:layout_centerVertical="true"
+                android:tint="@color/splash_screen_color"
+                android:onClick="@{()->viewModel.onPrevButtonClick()}"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/complete"
+                android:textSize="30dp"
+                android:layout_centerInParent="true"
+                android:textColor="@color/splash_screen_color"/>
+
+            <ImageButton
+                android:layout_width="15dp"
+                android:layout_height="wrap_content"
+                android:src="@drawable/next_btn"
+                android:layout_alignParentEnd="true"
+                android:background="#00ff0000"
+                android:layout_centerVertical="true"
+                android:scaleType="fitCenter"
+                android:adjustViewBounds="true"
+                android:tint="@color/splash_screen_color"
+                android:onClick="@{()->viewModel.onNextButtonClick()}"/>
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/splash_screen_color"
+            android:layout_marginBottom="@dimen/common_margin_10dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="양면이 모두 노릇노릇해지면 접시에 옮겨담아주세요.\n맛있는 파전이 완성되었습니다."
+            android:textSize="15dp"
+            android:layout_marginBottom="@dimen/common_margin_20dp"/>
+
+        <ImageView
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            android:src="@drawable/complete_img"
+            android:layout_gravity="center"/>
+    </LinearLayout>
+</layout>

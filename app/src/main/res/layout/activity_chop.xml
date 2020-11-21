@@ -4,16 +4,67 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-    <RelativeLayout
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/common_height_40dp">
-        <Button
-            android:id="@+id/complete_button"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginStart="@dimen/common_margin_30dp"
+        android:layout_marginEnd="@dimen/common_margin_30dp">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/common_height_40dp">
+            <ImageButton
+                android:id="@+id/chop_prev_btn"
+                android:layout_width="15dp"
+                android:layout_height="wrap_content"
+                android:scaleType="fitCenter"
+                android:adjustViewBounds="true"
+                android:src="@drawable/prev_btn"
+                android:layout_alignParentStart="true"
+                android:background="#00ff0000"
+                android:layout_centerVertical="true"
+                android:tint="@color/splash_screen_color"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/recipe"
+                android:textSize="30dp"
+                android:layout_centerInParent="true"
+                android:textColor="@color/splash_screen_color"/>
+
+            <ImageButton
+                android:id="@+id/chop_next_btn"
+                android:layout_width="15dp"
+                android:layout_height="wrap_content"
+                android:src="@drawable/next_btn"
+                android:layout_alignParentEnd="true"
+                android:background="#00ff0000"
+                android:layout_centerVertical="true"
+                android:scaleType="fitCenter"
+                android:adjustViewBounds="true"
+                android:tint="@color/splash_screen_color"/>
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/splash_screen_color"
+            android:layout_marginBottom="@dimen/common_margin_10dp"/>
+
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/complete_btn_name"
-            android:layout_alignParentEnd="true"/>
-    </RelativeLayout>
+            android:text="쪽파는 다듬어 깨끗이 씻은 후 길이에 맞게 잘라주세요."
+            android:textSize="15dp"
+            android:layout_gravity="center"
+            android:layout_marginBottom="@dimen/common_margin_20dp"/>
+
+    </LinearLayout>
+
+
     <fragment
         android:id="@+id/arFragment"
         android:name="com.google.ar.sceneform.ux.ArFragment"

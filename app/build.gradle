@@ -4,6 +4,7 @@ apply plugin: 'kotlin-android-extensions'
 apply plugin: 'com.google.ar.sceneform.plugin'
 apply plugin: 'kotlin-kapt'
 
+
 sceneform.asset('sampledata/models/knife.obj',
         'default',
         'sampledata/models/knife.sfa',

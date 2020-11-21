@@ -10,6 +10,7 @@ import com.example.arcookingclass.R
 import com.example.arcookingclass.data.Recipe
 import com.example.arcookingclass.databinding.ActivityMainBinding
 import com.example.arcookingclass.view.ingredient.IngredientActivity
+import com.example.arcookingclass.view.recipeintro.RecipeIntroActivity
 import java.lang.Exception
 
 class MainActivity : AppCompatActivity(){
@@ -20,6 +21,7 @@ class MainActivity : AppCompatActivity(){
     private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        setTheme(R.style.AppTheme)
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
@@ -43,8 +45,8 @@ class MainActivity : AppCompatActivity(){
                 startActivity(
                     Intent(
                         this@MainActivity,
-                        IngredientActivity::class.java
-                    ).putExtra(IngredientActivity.EXTRA_RECIPE_DATA, recipe)
+                        RecipeIntroActivity::class.java
+                    ).putExtra(RecipeIntroActivity.EXTRA_RECIPE_DATA, recipe)
                 )
             }
         }

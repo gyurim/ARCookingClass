@@ -3,6 +3,8 @@ package com.example.arcookingclass.view.main
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.AdapterView
+import android.widget.ImageView
+import androidx.databinding.BindingAdapter
 import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.DiffUtil
 import com.example.arcookingclass.data.Recipe

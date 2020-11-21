@@ -10,24 +10,176 @@
             name="viewModel"
             type="com.example.arcookingclass.view.ingredient.IngredientViewModel" />
     </data>
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_marginTop="@dimen/common_height_40dp"
+        android:layout_marginStart="@dimen/common_margin_30dp"
+        android:layout_marginEnd="@dimen/common_margin_30dp">
 
-        <Button
-            android:id="@+id/step1_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/step1_btn_name"
-            android:onClick="@{()->viewModel.onButtonClick()}"/>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/ingredient"
+                android:textSize="30dp"
+                android:layout_marginBottom="@dimen/common_margin_5dp"
+                android:textColor="@color/splash_screen_color"
+                android:layout_alignParentStart="true"/>
 
-        <TextView
-            android:id="@+id/ingredient_name"
+            <ImageButton
+                android:layout_width="15dp"
+                android:layout_height="wrap_content"
+                android:src="@drawable/next_btn"
+                android:layout_alignParentEnd="true"
+                android:background="#00ff0000"
+                android:layout_centerVertical="true"
+                android:scaleType="fitCenter"
+                android:adjustViewBounds="true"
+                android:tint="@color/splash_screen_color"
+                android:onClick="@{()->viewModel.onButtonClick()}"/>
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/splash_screen_color"
+            android:layout_marginBottom="@dimen/common_margin_30dp" />
+
+        <ImageView
+            android:layout_width="250dp"
+            android:layout_height="250dp"
+            android:background="@drawable/ingredient_img"
+            android:layout_gravity="center"
+            android:layout_marginBottom="@dimen/common_margin_10dp"/>
+
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/hint_ingredient_name"
-            android:text="@{recipeItem.ingredient}"
+            android:layout_marginBottom="@dimen/common_margin_5dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/ingredient_amount"
+                android:layout_alignParentEnd="true"/>
+        </RelativeLayout>
 
-            android:layout_below="@id/step1_btn"/>
-    </RelativeLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/splash_screen_color"
+                android:layout_marginBottom="@dimen/common_margin_20dp" />
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/common_height_50dp"
+                android:layout_marginEnd="@dimen/common_height_50dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="쪽파"
+                    android:textSize="15dp"
+                    android:textColor="@color/black"
+                    android:layout_alignParentStart="true"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="두줌"
+                    android:textSize="15dp"
+                    android:textColor="@color/black"
+                    android:layout_alignParentEnd="true"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/common_height_50dp"
+                android:layout_marginEnd="@dimen/common_height_50dp"
+                android:layout_marginBottom="@dimen/common_margin_30dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="식용유"
+                    android:textSize="15dp"
+                    android:textColor="@color/black"
+                    android:layout_alignParentStart="true"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="적당량"
+                    android:textSize="15dp"
+                    android:textColor="@color/black"
+                    android:layout_alignParentEnd="true"/>
+            </RelativeLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/ingredient_dough"
+                android:textSize="20dp"
+                android:textColor="@color/splash_screen_color"
+                android:layout_marginBottom="@dimen/common_margin_5dp"
+                android:layout_marginStart="@dimen/common_margin_5dp"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/splash_screen_color"
+                android:layout_marginBottom="@dimen/common_margin_20dp" />
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/common_height_50dp"
+                android:layout_marginEnd="@dimen/common_height_50dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="부침가루"
+                    android:textSize="15dp"
+                    android:textColor="@color/black"
+                    android:layout_alignParentStart="true"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="2컵"
+                    android:textSize="15dp"
+                    android:textColor="@color/black"
+                    android:layout_alignParentEnd="true"/>
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/common_height_50dp"
+                android:layout_marginEnd="@dimen/common_height_50dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="물"
+                    android:textSize="15dp"
+                    android:textColor="@color/black"
+                    android:layout_alignParentStart="true"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="2컵"
+                    android:textSize="15dp"
+                    android:textColor="@color/black"
+                    android:layout_alignParentEnd="true"/>
+            </RelativeLayout>
+        </LinearLayout>
+    </LinearLayout>
 </layout>

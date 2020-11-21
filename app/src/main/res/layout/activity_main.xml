@@ -11,19 +11,70 @@
             type="com.example.arcookingclass.view.main.MainViewModel" />
     </data>
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recipe_recycler_view"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:spanCount="2"
-            android:paddingHorizontal="20dp"
-            tools:listitem="@layout/item_recipe"
-            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager">
-        </androidx.recyclerview.widget.RecyclerView>
+            android:text="@string/splash_app_name"
+            android:textSize="40dp"
+            android:layout_marginTop="@dimen/common_margin_10dp"
+            android:layout_marginBottom="@dimen/common_margin_10dp"
+            android:gravity="center"
+            android:textColor="@color/splash_screen_color"/>
 
-    </RelativeLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="10dp">
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/snack_food"
+                android:background="#00ff0000"/>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/korean_food"
+                android:background="#00ff0000"/>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/late_night_food"
+                android:background="#00ff0000"/>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/western_food"
+                android:background="#00ff0000"/>
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recipe_recycler_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                app:spanCount="3"
+                tools:listitem="@layout/item_recipe"
+                android:layout_centerInParent="true"
+                android:layout_margin="@dimen/common_margin_10dp"/>
+        </RelativeLayout>
+
+    </LinearLayout>
 </layout>

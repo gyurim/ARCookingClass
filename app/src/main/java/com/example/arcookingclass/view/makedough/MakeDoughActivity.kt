@@ -1,4 +1,4 @@
-package com.example.arcookingclass.view.completecooking
+package com.example.arcookingclass.view.makedough
 
 import android.content.Intent
 import android.os.Bundle
@@ -7,20 +7,19 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.arcookingclass.R
-import com.example.arcookingclass.databinding.ActivityCompleteCookingBinding
-import com.example.arcookingclass.view.main.MainActivity
+import com.example.arcookingclass.databinding.ActivityMakeDoughBinding
+import com.example.arcookingclass.view.chop.ChopActivity
+import com.example.arcookingclass.view.turnongas.TurnOnGasActivity
 
-class CompleteCookingActivity : AppCompatActivity(){
-    private lateinit var viewModel: CompleteCookingViewModel
-    private lateinit var binding: ActivityCompleteCookingBinding
+class MakeDoughActivity : AppCompatActivity() {
+    private lateinit var viewModel : MakeDoughViewModel
+    private lateinit var binding : ActivityMakeDoughBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_complete_cooking)
 
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_complete_cooking)
-        viewModel = ViewModelProvider(this).get(CompleteCookingViewModel::class.java)
-
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_make_dough)
+        viewModel = ViewModelProvider(this).get(MakeDoughViewModel::class.java)
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
 
@@ -32,14 +31,13 @@ class CompleteCookingActivity : AppCompatActivity(){
             startActivity(
                 Intent(
                     this,
-                    MainActivity::class.java
-                ).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                    TurnOnGasActivity::class.java
+                )
             )
         })
 
         viewModel.navigateToPrevActivity.observe(this, Observer {
             finish()
         })
-
     }
 }

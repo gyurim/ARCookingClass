@@ -4,13 +4,12 @@
     <data>
         <variable
             name="viewModel"
-            type="com.example.arcookingclass.view.placedough.PlaceDoughViewModel" />
+            type="com.example.arcookingclass.view.makedough.MakeDoughViewModel" />
     </data>
-
     <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
         android:layout_marginTop="@dimen/common_height_40dp"
         android:layout_marginStart="@dimen/common_margin_30dp"
         android:layout_marginEnd="@dimen/common_margin_30dp">
@@ -18,6 +17,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
+
             <ImageButton
                 android:layout_width="15dp"
                 android:layout_height="wrap_content"
@@ -33,10 +33,11 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/recipe"
+                android:text="@string/ingredient"
                 android:textSize="30dp"
+                android:layout_marginBottom="@dimen/common_margin_5dp"
                 android:layout_centerInParent="true"
-                android:textColor="@color/splash_screen_color"/>
+                android:textColor="@color/splash_screen_color" />
 
             <ImageButton
                 android:layout_width="15dp"
@@ -48,52 +49,28 @@
                 android:scaleType="fitCenter"
                 android:adjustViewBounds="true"
                 android:tint="@color/splash_screen_color"
-                android:onClick="@{()->viewModel.onNextButtonClick()}"/>
+                android:onClick="@{()->viewModel.onNextButtonClick()}" />
         </RelativeLayout>
 
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:background="@color/splash_screen_color"
-            android:layout_marginBottom="@dimen/common_margin_10dp"/>
+            android:layout_marginBottom="@dimen/common_margin_10dp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="반죽을 크게 한 국자 올리고, 넓게 펼쳐주세요. "
+            android:text="볼에 반죽 재료를 넣고 섞어준 뒤, 쪽파를 넣어주세요."
             android:textSize="15dp"
-            android:layout_marginBottom="@dimen/common_margin_5dp"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="tip| 반죽을 최대한 얇게 펴주어야 바삭한 전이 됩니다. "
-            android:textSize="11dp"
-            android:layout_marginBottom="@dimen/common_margin_20dp"/>
-
-        <VideoView
-            android:id="@+id/place_dough_video"
-            android:layout_width="match_parent"
-            android:layout_height="400dp"
-            android:layout_gravity="center"/>
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="50dp"
-            android:text="@string/start_guide_video_txt"
             android:layout_gravity="center"
-            android:onClick="@{()->viewModel.onStartButtonClick()}"
-            android:layout_marginTop="@dimen/common_margin_20dp"
-            android:background="#00ff0000"/>
+            android:layout_marginBottom="@dimen/common_margin_30dp"/>
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="50dp"
-            android:text="@string/pause_guide_video_txt"
+        <ImageView
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            android:background="@drawable/ingredient_img"
             android:layout_gravity="center"
-            android:onClick="@{()->viewModel.onPauseButtonClick()}"
-            android:layout_marginTop="@dimen/common_margin_10dp"
-            android:background="#00ff0000"/>
-
+            android:layout_marginBottom="@dimen/common_margin_30dp"/>
     </LinearLayout>
 </layout>
