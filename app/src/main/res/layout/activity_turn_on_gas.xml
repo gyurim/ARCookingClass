@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    
+    <data>
+        <variable
+            name="viewModel"
+            type="com.example.arcookingclass.view.turnongas.TurnOnGasViewModel" />
+    </data>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <Button
+                android:id="@+id/prev_turn_on_gas_video_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/common_text_50dp"
+                android:text="@string/prev_guide_video_txt"
+                android:layout_alignParentStart="true"
+                android:onClick="@{()->viewModel.onPrevButtonClick()}"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:text="@string/turn_on_gas_video_txt"
+                android:layout_centerInParent="true"/>
+
+            <Button
+                android:id="@+id/next_turn_on_gas_video_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/common_text_50dp"
+                android:text="@string/next_guide_video_txt"
+                android:layout_alignParentEnd="true"
+                android:onClick="@{()->viewModel.onNextButtonClick()}"/>
+        </RelativeLayout>
+
+        <VideoView
+            android:id="@+id/turn_on_gas_video"
+            android:layout_width="match_parent"
+            android:layout_height="400dp"
+            android:layout_gravity="center"/>
+
+        <Button
+            android:id="@+id/start_turn_on_gas_video_btn"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="@string/start_guide_video_txt"
+            android:onClick="@{()->viewModel.onStartButtonClick()}"/>
+
+        <Button
+            android:id="@+id/pause_turn_on_gas_video_btn"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="@string/pause_guide_video_txt"
+            android:onClick="@{()->viewModel.onPauseButtonClick()}"/>
+    </LinearLayout>
+</layout>

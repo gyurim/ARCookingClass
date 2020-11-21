@@ -22,12 +22,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".view.ingredient.IngredientActivity">
-        </activity>
-        <activity android:name="com.example.arcookingclass.view.step.Step1Activity">
+        <activity android:name=".view.ingredient.IngredientActivity"/>
+        <activity android:name="com.example.arcookingclass.view.chop.ChopActivity">
             <meta-data android:name="com.google.ar.core" android:value="required"/>
         </activity>
         <meta-data android:name="com.google.ar.core" android:value="required" />
+        <activity android:name=".view.turnongas.TurnOnGasActivity"/>
+        <activity android:name=".view.addoil.AddOilActivity"/>
+        <activity android:name=".view.placedough.PlaceDoughActivity"/>
+        <activity android:name=".view.bakepajeon.BakePajeonActivity"/>
+        <activity android:name=".view.completecooking.CompleteCookingActivity"/>
     </application>
 
 </manifest>

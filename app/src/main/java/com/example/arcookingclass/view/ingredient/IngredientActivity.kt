@@ -9,7 +9,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.arcookingclass.R
 import com.example.arcookingclass.data.Recipe
 import com.example.arcookingclass.databinding.ActivityIngredientBinding
-import com.example.arcookingclass.view.step.Step1Activity
+import com.example.arcookingclass.view.chop.ChopActivity
 
 class IngredientActivity : AppCompatActivity() {
     private lateinit var viewModel: IngredientViewModel
@@ -19,7 +19,6 @@ class IngredientActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_ingredient)
-        // layout 태그 필요 -> Activity()Binding 생성
         viewModel = ViewModelProvider(this).get(IngredientViewModel::class.java)
         binding.recipeItem = intent.getSerializableExtra(EXTRA_RECIPE_DATA) as Recipe
         binding.lifecycleOwner = this
@@ -33,7 +32,7 @@ class IngredientActivity : AppCompatActivity() {
             startActivity(
                 Intent(
                     this@IngredientActivity,
-                    Step1Activity::class.java
+                    ChopActivity::class.java
                 )
             )
         })
