@@ -2,19 +2,12 @@ package com.example.arcookingclass.view.chop
 
 import android.content.Intent
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
-import android.view.MotionEvent
 import android.view.View
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.example.arcookingclass.R
 import com.example.arcookingclass.view.makedough.MakeDoughActivity
-import com.example.arcookingclass.view.turnongas.TurnOnGasActivity
 import com.google.ar.core.Anchor
-import com.google.ar.core.HitResult
-import com.google.ar.core.Plane
-import com.google.ar.core.Pose
 import com.google.ar.sceneform.AnchorNode
 import com.google.ar.sceneform.Node
 import com.google.ar.sceneform.math.Quaternion
@@ -22,16 +15,10 @@ import com.google.ar.sceneform.math.Vector3
 import com.google.ar.sceneform.rendering.ModelRenderable
 import com.google.ar.sceneform.ux.ArFragment
 import com.google.ar.sceneform.ux.BaseArFragment
-import com.google.ar.sceneform.ux.TransformableNode
 import kotlinx.android.synthetic.main.activity_chop.*
-import java.util.*
 
 class ChopActivity : AppCompatActivity(), View.OnClickListener{
     private lateinit var arFragment : ArFragment
-    var positionX = 0f
-    var positionY = 0f
-    val positionZ = 0f
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_chop)
@@ -39,7 +26,7 @@ class ChopActivity : AppCompatActivity(), View.OnClickListener{
         chop_next_btn.setOnClickListener(this)
         chop_prev_btn.setOnClickListener(this)
 
-        arFragment = supportFragmentManager.findFragmentById(R.id.arFragment) as ArFragment
+        arFragment = supportFragmentManager.findFragmentById(R.id.chopArFragment) as ArFragment
         arFragment.setOnTapArPlaneListener(BaseArFragment.OnTapArPlaneListener { hitResult, plane, motionEvent ->
             val anchor = hitResult.createAnchor()
 

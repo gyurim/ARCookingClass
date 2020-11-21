@@ -29,4 +29,6 @@
     <string name="ingredient_dough">반죽 재료</string>
     <string name="recipe">레시피</string>
     <string name="complete">완성</string>
+    <string name="initCM">0.0</string>
+    <string name="clear">초기화</string>
 </resources>
