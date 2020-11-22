@@ -5,7 +5,11 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.databinding.DataBindingUtil
 import com.example.arcookingclass.R
+import com.example.arcookingclass.data.Recipe
+import com.example.arcookingclass.databinding.ActivityChopBinding
+import com.example.arcookingclass.view.ingredient.IngredientActivity
 import com.example.arcookingclass.view.makedough.MakeDoughActivity
 import com.google.ar.core.Anchor
 import com.google.ar.sceneform.AnchorNode
@@ -19,17 +23,19 @@ import kotlinx.android.synthetic.main.activity_chop.*
 
 class ChopActivity : AppCompatActivity(), View.OnClickListener{
     private lateinit var arFragment : ArFragment
+    private lateinit var binding : ActivityChopBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_chop)
 
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_chop)
+        binding.recipeItem = intent.getSerializableExtra(EXTRA_RECIPE_DATA) as Recipe
         chop_next_btn.setOnClickListener(this)
         chop_prev_btn.setOnClickListener(this)
 
         arFragment = supportFragmentManager.findFragmentById(R.id.chopArFragment) as ArFragment
         arFragment.setOnTapArPlaneListener(BaseArFragment.OnTapArPlaneListener { hitResult, plane, motionEvent ->
             val anchor = hitResult.createAnchor()
-
             ModelRenderable.builder()
                     .setSource(this, R.raw.knife)
                     .build()
@@ -90,13 +96,19 @@ class ChopActivity : AppCompatActivity(), View.OnClickListener{
     }
 
     private fun onNextButtonClick(){
+
         startActivity(
                 Intent(this,
-                MakeDoughActivity::class.java)
+                MakeDoughActivity::class.java
+                ).putExtra(MakeDoughActivity.EXTRA_RECIPE_DATA, binding.recipeItem)
         )
     }
 
     private fun onPrevButtonClick(){
         finish()
+    }
+
+    companion object {
+        const val EXTRA_RECIPE_DATA = "recipe_data"
     }
 }

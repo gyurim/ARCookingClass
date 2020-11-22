@@ -11,9 +11,11 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.arcookingclass.R
+import com.example.arcookingclass.data.Recipe
 import com.example.arcookingclass.databinding.ActivityBakePajeonBinding
 import com.example.arcookingclass.view.addoil.AddOilActivity
 import com.example.arcookingclass.view.completecooking.CompleteCookingActivity
+import com.example.arcookingclass.view.placedough.PlaceDoughActivity
 import com.example.arcookingclass.view.turnongas.TurnOnGasActivity
 import com.example.arcookingclass.view.turnongas.TurnOnGasViewModel
 import kotlinx.android.synthetic.main.activity_bake_pajeon.*
@@ -32,6 +34,7 @@ class BakePajeonActivity : AppCompatActivity() {
 
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
+        binding.recipeItem = intent.getSerializableExtra(EXTRA_RECIPE_DATA) as Recipe
 
         video_uri = Uri.parse("android.resource://$packageName/raw/bake_pajeon_video");
         bake_pajeon_video.setMediaController(MediaController(this))
@@ -64,7 +67,7 @@ class BakePajeonActivity : AppCompatActivity() {
                     Intent(
                             this,
                             CompleteCookingActivity::class.java
-                    )
+                    ).putExtra(CompleteCookingActivity.EXTRA_RECIPE_DATA, binding.recipeItem)
             )
         })
 
@@ -86,5 +89,9 @@ class BakePajeonActivity : AppCompatActivity() {
                 bake_pajeon_video.pause()
             }
         })
+    }
+
+    companion object {
+        const val EXTRA_RECIPE_DATA = "recipe_data"
     }
 }

@@ -24,19 +24,13 @@ class MainActivity : AppCompatActivity(){
         setTheme(R.style.AppTheme)
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
-
-        try {
-            viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
-        } catch (e : Exception){
-            e.printStackTrace()
-        }
+        viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
 
         mainAdapter = MainAdapter(onItemClickListener())
         binding.lifecycleOwner = this
         binding.recipeRecyclerView.adapter = mainAdapter
         binding.viewModel = viewModel
         observeLiveData()
-
     }
 
     private fun onItemClickListener(): MainAdapter.OnItemClickListener {

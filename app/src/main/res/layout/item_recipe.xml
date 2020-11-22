@@ -8,6 +8,9 @@
         <variable
             name="recipeItem"
             type="com.example.arcookingclass.data.Recipe" />
+        <variable
+            name="viewModel"
+            type="com.example.arcookingclass.view.main.MainViewModel" />
     </data>
 
     <RelativeLayout
@@ -24,26 +27,27 @@
 
         <TextView
             android:id="@+id/recipe_name"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/hint_recipe_name"
             android:layout_below="@id/recipe_icon"
             android:text="@{recipeItem.name}"
-            android:textSize="15dp"
-            android:layout_centerHorizontal="true"
+            android:textSize="13dp"
+            android:gravity="center"
             android:textStyle="bold"/>
 
         <RelativeLayout
+            android:id="@+id/wrap_recipe_level_time"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/recipe_name"
-            android:layout_marginBottom="@dimen/common_margin_20dp">
+            android:gravity="center">
             <TextView
                 android:id="@+id/recipe_level"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@{recipeItem.level}"
-                android:textSize="15dp"
+                android:textSize="11dp"
                 android:layout_toStartOf="@id/item_recipe_center"
                 android:textColor="@color/splash_screen_color"/>
             <TextView
@@ -51,7 +55,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text=" | "
-                android:textSize="15dp"
+                android:textSize="11dp"
                 android:layout_centerInParent="true"
                 android:textColor="@color/splash_screen_color"/>
             <TextView
@@ -59,9 +63,17 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@{recipeItem.time}"
-                android:textSize="15dp"
+                android:textSize="11dp"
                 android:layout_toEndOf="@id/item_recipe_center"
                 android:textColor="@color/splash_screen_color"/>
         </RelativeLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{recipeItem.islearn}"
+            android:layout_below="@+id/wrap_recipe_level_time"
+            android:layout_marginBottom="@dimen/common_margin_20dp"
+            android:gravity="center"/>
     </RelativeLayout>
 </layout>

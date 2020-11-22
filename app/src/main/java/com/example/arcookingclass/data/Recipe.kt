@@ -13,5 +13,6 @@ data class Recipe (
     @ColumnInfo(name = "image_url") var image_url: Int?,
     @ColumnInfo(name = "ingredient") var ingredient: String? = "",
     @ColumnInfo(name = "level") var level : String? = "",
-    @ColumnInfo(name = "time") var time :  String? = ""
+    @ColumnInfo(name = "time") var time :  String? = "",
+    @ColumnInfo(name = "islearn") var islearn : Boolean = false
 ) : Serializable

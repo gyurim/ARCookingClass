@@ -3,6 +3,10 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
     <data>
         <variable
+            name="recipeItem"
+            type="com.example.arcookingclass.data.Recipe" />
+
+        <variable
             name="viewModel"
             type="com.example.arcookingclass.view.makedough.MakeDoughViewModel" />
     </data>

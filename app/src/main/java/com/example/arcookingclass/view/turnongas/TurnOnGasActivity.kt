@@ -11,9 +11,11 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.arcookingclass.R
+import com.example.arcookingclass.data.Recipe
 import com.example.arcookingclass.databinding.ActivityTurnOnGasBinding
 import com.example.arcookingclass.view.addoil.AddOilActivity
 import com.example.arcookingclass.view.main.MainActivity
+import com.example.arcookingclass.view.makedough.MakeDoughActivity
 import kotlinx.android.synthetic.main.activity_turn_on_gas.*
 
 class TurnOnGasActivity : AppCompatActivity() {
@@ -29,6 +31,7 @@ class TurnOnGasActivity : AppCompatActivity() {
 
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
+        binding.recipeItem = intent.getSerializableExtra(EXTRA_RECIPE_DATA) as Recipe
 
         video_uri = Uri.parse("android.resource://$packageName/raw/turn_on_gas_video");
         turn_on_gas_video.setMediaController(MediaController(this))
@@ -61,7 +64,7 @@ class TurnOnGasActivity : AppCompatActivity() {
                     Intent(
                             this,
                             AddOilActivity::class.java
-                    )
+                    ).putExtra(AddOilActivity.EXTRA_RECIPE_DATA, binding.recipeItem)
             )
         })
 
@@ -83,5 +86,9 @@ class TurnOnGasActivity : AppCompatActivity() {
                 turn_on_gas_video.pause()
             }
         })
+    }
+
+    companion object {
+        const val EXTRA_RECIPE_DATA = "recipe_data"
     }
 }

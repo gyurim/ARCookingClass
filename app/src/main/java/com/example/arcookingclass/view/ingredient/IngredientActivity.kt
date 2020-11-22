@@ -33,7 +33,7 @@ class IngredientActivity : AppCompatActivity() {
                 Intent(
                     this@IngredientActivity,
                     ChopActivity::class.java
-                )
+                ).putExtra(ChopActivity.EXTRA_RECIPE_DATA, binding.recipeItem)
             )
         })
     }

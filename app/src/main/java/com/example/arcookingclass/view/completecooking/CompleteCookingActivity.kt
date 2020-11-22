@@ -7,7 +7,10 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.arcookingclass.R
+import com.example.arcookingclass.data.Recipe
+import com.example.arcookingclass.data.RecipeDao
 import com.example.arcookingclass.databinding.ActivityCompleteCookingBinding
+import com.example.arcookingclass.view.bakepajeon.BakePajeonActivity
 import com.example.arcookingclass.view.main.MainActivity
 
 class CompleteCookingActivity : AppCompatActivity(){
@@ -23,12 +26,15 @@ class CompleteCookingActivity : AppCompatActivity(){
 
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
+        binding.recipeItem = intent.getSerializableExtra(EXTRA_RECIPE_DATA) as Recipe
 
         observeLiveData()
     }
 
     private fun observeLiveData(){
         viewModel.navigateToNextActivity.observe(this, Observer {
+            binding.recipeItem?.islearn = true
+            viewModel.updateRecipe(binding.recipeItem)
             startActivity(
                 Intent(
                     this,
@@ -40,6 +46,9 @@ class CompleteCookingActivity : AppCompatActivity(){
         viewModel.navigateToPrevActivity.observe(this, Observer {
             finish()
         })
+    }
 
+    companion object {
+        const val EXTRA_RECIPE_DATA = "recipe_data"
     }
 }

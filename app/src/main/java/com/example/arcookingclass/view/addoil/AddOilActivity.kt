@@ -11,6 +11,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.arcookingclass.R
+import com.example.arcookingclass.data.Recipe
 import com.example.arcookingclass.databinding.ActivityAddOilBinding
 import com.example.arcookingclass.view.placedough.PlaceDoughActivity
 import com.example.arcookingclass.view.turnongas.TurnOnGasActivity
@@ -29,6 +30,8 @@ class AddOilActivity : AppCompatActivity() {
 
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
+
+        binding.recipeItem = intent.getSerializableExtra(EXTRA_RECIPE_DATA) as Recipe
 
         video_uri = Uri.parse("android.resource://$packageName/raw/add_oil_video");
         add_oil_video.setMediaController(MediaController(this))
@@ -61,7 +64,7 @@ class AddOilActivity : AppCompatActivity() {
                     Intent(
                             this,
                             PlaceDoughActivity::class.java
-                    )
+                    ).putExtra(PlaceDoughActivity.EXTRA_RECIPE_DATA, binding.recipeItem)
             )
         })
 
@@ -83,5 +86,9 @@ class AddOilActivity : AppCompatActivity() {
                 add_oil_video.pause()
             }
         })
+    }
+
+    companion object {
+        const val EXTRA_RECIPE_DATA = "recipe_data"
     }
 }

@@ -14,6 +14,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.arcookingclass.R
+import com.example.arcookingclass.data.Recipe
 import com.example.arcookingclass.databinding.ActivityMakeDoughBinding
 import com.example.arcookingclass.view.turnongas.TurnOnGasActivity
 import com.google.ar.core.Anchor
@@ -28,7 +29,6 @@ import com.google.ar.sceneform.rendering.*
 import com.google.ar.sceneform.ux.ArFragment
 import com.google.ar.sceneform.ux.TransformableNode
 import kotlinx.android.synthetic.main.activity_make_dough.*
-import kotlinx.android.synthetic.main.distance_text_layout.*
 import kotlin.math.pow
 import kotlin.math.sqrt
 import com.google.ar.sceneform.rendering.Color as arColor
@@ -47,7 +47,8 @@ class MakeDoughActivity : AppCompatActivity(), Scene.OnUpdateListener {
     private var cubeRenderable: ModelRenderable? = null
     private var distanceCardViewRenderable: ViewRenderable? = null
 
-    private val multipleDistances = Array(Constants.maxNumMultiplePoints,
+    private val multipleDistances = Array(
+            Constants.maxNumMultiplePoints,
             {Array<TextView?>(Constants.maxNumMultiplePoints){null} })
     private lateinit var initCM: String
 
@@ -58,6 +59,7 @@ class MakeDoughActivity : AppCompatActivity(), Scene.OnUpdateListener {
         viewModel = ViewModelProvider(this).get(MakeDoughViewModel::class.java)
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
+        binding.recipeItem = intent.getSerializableExtra(EXTRA_RECIPE_DATA) as Recipe
 
         observeLiveData()
 
@@ -78,7 +80,7 @@ class MakeDoughActivity : AppCompatActivity(), Scene.OnUpdateListener {
                 Intent(
                     this,
                     TurnOnGasActivity::class.java
-                )
+                ).putExtra(TurnOnGasActivity.EXTRA_RECIPE_DATA, binding.recipeItem)
             )
         })
 
@@ -287,4 +289,7 @@ class MakeDoughActivity : AppCompatActivity(), Scene.OnUpdateListener {
         measureDistanceOf2Points()
     }
 
+    companion object {
+        const val EXTRA_RECIPE_DATA = "recipe_data"
+    }
 }

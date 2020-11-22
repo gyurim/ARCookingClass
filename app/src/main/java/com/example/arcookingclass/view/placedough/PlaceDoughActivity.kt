@@ -11,7 +11,9 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.arcookingclass.R
+import com.example.arcookingclass.data.Recipe
 import com.example.arcookingclass.databinding.ActivityPlaceDoughBinding
+import com.example.arcookingclass.view.addoil.AddOilActivity
 import com.example.arcookingclass.view.bakepajeon.BakePajeonActivity
 import com.example.arcookingclass.view.turnongas.TurnOnGasActivity
 import kotlinx.android.synthetic.main.activity_place_dough.*
@@ -30,6 +32,7 @@ class PlaceDoughActivity  : AppCompatActivity(){
 
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
+        binding.recipeItem = intent.getSerializableExtra(EXTRA_RECIPE_DATA) as Recipe
 
         video_uri = Uri.parse("android.resource://$packageName/raw/place_dough_video");
         place_dough_video.setMediaController(MediaController(this))
@@ -62,7 +65,7 @@ class PlaceDoughActivity  : AppCompatActivity(){
                     Intent(
                             this,
                             BakePajeonActivity::class.java
-                    )
+                    ).putExtra(BakePajeonActivity.EXTRA_RECIPE_DATA, binding.recipeItem)
             )
         })
 
@@ -84,5 +87,9 @@ class PlaceDoughActivity  : AppCompatActivity(){
                 place_dough_video.pause()
             }
         })
+    }
+
+    companion object {
+        const val EXTRA_RECIPE_DATA = "recipe_data"
     }
 }
